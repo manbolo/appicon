@@ -1,0 +1,4 @@
+Pillow==2.4.0
+Unidecode==0.04.16
+python-slugify==0.0.7
+requests==2.2.1
