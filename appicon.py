@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 import glob, os
 import requests
 from zipfile import ZipFile

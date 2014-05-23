@@ -16,50 +16,50 @@
 
 + (NSImage *)maskImage:(NSImage *)image usingMaskImage:(NSImage *)maskImage
 {
-	// Make sure the arguments are provided; if not, simply return the original image.
-	// If the original image isn't provided, nil will be returned.
-	if (!image || !maskImage){
-		return image;
-	}
-	
-	// Create a CGImage holding the mask image
-	CGImageSourceRef maskSourceRef = CGImageSourceCreateWithData((__bridge CFDataRef)[maskImage TIFFRepresentation], NULL);
-	CGImageRef maskRef = CGImageSourceCreateImageAtIndex(maskSourceRef, 0, NULL);
-	
-	// Create a mask from the provided mask image
-	CGImageRef mask = CGImageMaskCreate(CGImageGetWidth(maskRef),
-										CGImageGetHeight(maskRef),
-										CGImageGetBitsPerComponent(maskRef),
-										CGImageGetBitsPerPixel(maskRef),
-										CGImageGetBytesPerRow(maskRef),
-										CGImageGetDataProvider(maskRef), NULL, false);
-	
-	// Create a CGImage that represents the source image
-	CGImageSourceRef imageSourceRef = CGImageSourceCreateWithData((__bridge CFDataRef)[image TIFFRepresentation], NULL);
-	CGImageRef imageRef = CGImageSourceCreateImageAtIndex(imageSourceRef, 0, NULL);
-	
-	// Perform the actual masking
-	CGImageRef maskedImage = CGImageCreateWithMask(imageRef, mask);
-	
-	// Convert the output into NSImage
-	NSImage *result = [[NSImage alloc] initWithCGImage:maskedImage size:image.size];
-	
-	// Release the memory used for creating the mask
-	CFRelease(maskSourceRef);
-	CGImageRelease(maskRef);
-	CGImageRelease(mask);
-	
-	// Release the memory used for masking the image
-	CFRelease(imageSourceRef);
-	CGImageRelease(imageRef);
-	CGImageRelease(maskedImage);
-	
-	return result;
+    // Make sure the arguments are provided; if not, simply return the original image.
+    // If the original image isn't provided, nil will be returned.
+    if (!image || !maskImage){
+        return image;
+    }
+    
+    // Create a CGImage holding the mask image
+    CGImageSourceRef maskSourceRef = CGImageSourceCreateWithData((__bridge CFDataRef)[maskImage TIFFRepresentation], NULL);
+    CGImageRef maskRef = CGImageSourceCreateImageAtIndex(maskSourceRef, 0, NULL);
+    
+    // Create a mask from the provided mask image
+    CGImageRef mask = CGImageMaskCreate(CGImageGetWidth(maskRef),
+                                        CGImageGetHeight(maskRef),
+                                        CGImageGetBitsPerComponent(maskRef),
+                                        CGImageGetBitsPerPixel(maskRef),
+                                        CGImageGetBytesPerRow(maskRef),
+                                        CGImageGetDataProvider(maskRef), NULL, false);
+    
+    // Create a CGImage that represents the source image
+    CGImageSourceRef imageSourceRef = CGImageSourceCreateWithData((__bridge CFDataRef)[image TIFFRepresentation], NULL);
+    CGImageRef imageRef = CGImageSourceCreateImageAtIndex(imageSourceRef, 0, NULL);
+    
+    // Perform the actual masking
+    CGImageRef maskedImage = CGImageCreateWithMask(imageRef, mask);
+    
+    // Convert the output into NSImage
+    NSImage *result = [[NSImage alloc] initWithCGImage:maskedImage size:image.size];
+    
+    // Release the memory used for creating the mask
+    CFRelease(maskSourceRef);
+    CGImageRelease(maskRef);
+    CGImageRelease(mask);
+    
+    // Release the memory used for masking the image
+    CFRelease(imageSourceRef);
+    CGImageRelease(imageRef);
+    CGImageRelease(maskedImage);
+    
+    return result;
 }
 
 - (NSImage *)maskUsingMaskImage:(NSImage *)maskImage
 {
-	return [NSImage maskImage:self usingMaskImage:maskImage];
+    return [NSImage maskImage:self usingMaskImage:maskImage];
 }
 
 @end
@@ -75,26 +75,26 @@
 
 - (NSBitmapImageRep *)bitmap
 {
-	[self lockFocus];
-	NSBitmapImageRep *bitmap = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, self.size.width, self.size.height)];
-	[self unlockFocus];
-	return bitmap;
+    [self lockFocus];
+    NSBitmapImageRep *bitmap = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, self.size.width, self.size.height)];
+    [self unlockFocus];
+    return bitmap;
 }
 
 - (NSImage *)resizeToWidth:(NSInteger)outputWidth
 {
-	NSInteger outputHeight = round((self.size.height/(float)self.size.width) * outputWidth);
-	NSImage *resultImage = [[NSImage alloc] initWithSize:NSMakeSize(outputWidth, outputHeight)];
-	[resultImage lockFocus];
-	[[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationHigh];
-	[[self bitmap] drawInRect:NSMakeRect(0.0, 0.0, outputWidth, outputHeight)];
-	[resultImage unlockFocus];
-	return resultImage;
+    NSInteger outputHeight = round((self.size.height/(float)self.size.width) * outputWidth);
+    NSImage *resultImage = [[NSImage alloc] initWithSize:NSMakeSize(outputWidth, outputHeight)];
+    [resultImage lockFocus];
+    [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationHigh];
+    [[self bitmap] drawInRect:NSMakeRect(0.0, 0.0, outputWidth, outputHeight)];
+    [resultImage unlockFocus];
+    return resultImage;
 }
 
 - (NSData*)pngData
 {
-	return [[self bitmap] representationUsingType:NSPNGFileType properties:nil];
+    return [[self bitmap] representationUsingType:NSPNGFileType properties:nil];
 }
 
 @end
@@ -189,7 +189,7 @@ void downloadApps()
 
 int main()
 {
-	downloadApps();
+    downloadApps();
 }
 
 
