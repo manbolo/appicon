@@ -1,6 +1,4 @@
-import glob, os
 import requests
-from zipfile import ZipFile
 from PIL import Image
 from StringIO import StringIO
 from slugify import slugify
@@ -54,15 +52,13 @@ def download_icon_mask():
     return mask
 
 
-
-
 def download_apps():
     """
     """
     app_ids = [
-               "400274934",  # Meon
-               "417817520",  # Tiny Wings
-               ]
+        "400274934",  # Meon
+        "417817520",  # Tiny Wings
+        ]
 
     mask = download_icon_mask()
 
