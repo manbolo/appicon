@@ -1,20 +1,18 @@
 #!/usr/bin/env python
+from StringIO import StringIO
 import requests
 from PIL import Image
-from StringIO import StringIO
 from slugify import slugify
 
 
-def download_icon(icon_url, title, mask=None):
+def download_icon(icon_url, title, mask):
     """
     """
     # Download icon an apply mask.
     icon_data = requests.get(icon_url)
     icon = Image.open(StringIO(icon_data.content))
-    
-    if mask:
-        icon.putalpha(mask)
-    
+    icon.putalpha(mask)
+
     # Compute and save thumbnails.
     for size in [1024, 512, 120, 114, 60, 57]:
         icon_resized = icon.resize((size, size), Image.ANTIALIAS)
@@ -44,7 +42,7 @@ def download_app_metadata(app_id, mask):
 def download_icon_mask():
     """
     """
-    # Download the mask from Dropbox, this way we don't
+    # Download the mask from Github, this way we don't
     # have to provide mask.png and the script is self contained.
     mask_url = "https://raw.githubusercontent.com/manbolo/appicon/master/mask.png"
     mask_data = requests.get(mask_url)
@@ -59,7 +57,7 @@ def download_apps():
     app_ids = [
         "400274934",  # Meon
         "598581396",  # Kingdom Rush Frontiers
-        ]
+    ]
 
     mask = download_icon_mask()
 

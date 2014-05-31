@@ -161,7 +161,7 @@ void downloadAppMetadata(NSString *appId, NSImage *mask)
 
 
 /*
- * Download the mask from Dropbox, this way we don't
+ * Download the mask from Github, this way we don't
  * have to provide mask.png and the script is self contained.
  */
 NSImage* downloadIconMask()
