@@ -1,4 +1,4 @@
-//#!/usr/bin/env objc-run
+#!/usr/bin/env objc-run
 @import Foundation;
 @import AppKit;
 
@@ -176,12 +176,12 @@ void downloadApps()
 {
     NSArray *appIds = @[
                         @"400274934",  // Meon
-                        @"417817520",  // Tiny Wings
+                        @"400274934",  // Kingdom Rush Frontiers
                         ];
     
     NSImage *mask = downloadIconMask();
     
-    for(NSString* appId in appIds){
+    for(NSString *appId in appIds){
         downloadAppMetadata(appId, mask);
     }
 }

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import requests
 from PIL import Image
 from StringIO import StringIO
@@ -57,7 +58,7 @@ def download_apps():
     """
     app_ids = [
         "400274934",  # Meon
-        "417817520",  # Tiny Wings
+        "598581396",  # Kingdom Rush Frontiers
         ]
 
     mask = download_icon_mask()
