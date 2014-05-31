@@ -166,7 +166,7 @@ void downloadAppMetadata(NSString *appId, NSImage *mask)
  */
 NSImage* downloadIconMask()
 {
-    NSURL *maskURL = [NSURL URLWithString:@"https://dl.dropbox.com/s/sap8nn7bjmhcdzn/maskInverted.png"];
+    NSURL *maskURL = [NSURL URLWithString:@"https://raw.githubusercontent.com/manbolo/appicon/master/maskInverted.png"];
     NSImage *mask = [[NSImage alloc] initWithContentsOfURL:maskURL];
     return mask;
 }
@@ -176,7 +176,7 @@ void downloadApps()
 {
     NSArray *appIds = @[
                         @"400274934",  // Meon
-                        @"400274934",  // Kingdom Rush Frontiers
+                        @"598581396",  // Kingdom Rush Frontiers
                         ];
     
     NSImage *mask = downloadIconMask();

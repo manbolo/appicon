@@ -46,7 +46,7 @@ def download_icon_mask():
     """
     # Download the mask from Dropbox, this way we don't
     # have to provide mask.png and the script is self contained.
-    mask_url = "https://dl.dropbox.com/s/9otqkpyqx7ehfd0/mask.png"
+    mask_url = "https://raw.githubusercontent.com/manbolo/appicon/master/mask.png"
     mask_data = requests.get(mask_url)
     mask = Image.open(StringIO(mask_data.content))
     mask = mask.convert('L')
