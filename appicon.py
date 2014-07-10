@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# To be changed by OHO
+
 from StringIO import StringIO
 import requests
 from PIL import Image
